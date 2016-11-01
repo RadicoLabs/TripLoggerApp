@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/et_tripTitle"
+        android:hint="Enter a title for the trip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <include
+        layout="@layout/view_camera_and_title" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Details"
+        style="?android:listSeparatorTextViewStyle"
+        />
+
+    <Button android:id="@+id/btn_fragment_trip_date_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" />
+
+    <TextView
+        android:id="@+id/tv_fragment_trip_type_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_fragment_trip_destination_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_fragment_trip_duration_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_fragment_trip_comment_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_fragment_trip_photo_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    />
+
+    <Button
+        android:id="@+id/btn_fragment_trip_DELETE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Trip"/>
+
+    <Button
+        android:id="@+id/btn_fragment_trip_SHOWMAP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show GPS"/>
+
+
+
+</LinearLayout>

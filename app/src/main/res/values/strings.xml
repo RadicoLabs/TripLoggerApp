@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">TripLog</string>
+
+    <string name="btn_tripList_log">LOG</string>
+    <string name="btn_tripList_settings">SETTINGS</string>
+
+
+    <string name="tlbar_new_trip">New Trip</string>
+
+    <string-array name="arr_tripType">
+        <item>Work</item>
+        <item>Personal</item>
+        <item>Commute</item>
+    </string-array>
+
+    <string-array name="arr_genderType">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+
+</resources>
