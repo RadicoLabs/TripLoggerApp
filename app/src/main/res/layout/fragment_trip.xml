@@ -4,14 +4,16 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+
     <EditText
         android:id="@+id/et_tripTitle"
-        android:hint="Enter a title for the trip"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:editable="false"/>
 
     <include
-        layout="@layout/view_camera_and_title" />
+        layout="@layout/view_camera_and_title"/>
 
     <TextView
         android:layout_width="match_parent"

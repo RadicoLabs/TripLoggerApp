@@ -6,6 +6,7 @@
 
 
     <string name="tlbar_new_trip">New Trip</string>
+    <string name="tlbar_settings">Settings</string>
 
     <string-array name="arr_tripType">
         <item>Work</item>

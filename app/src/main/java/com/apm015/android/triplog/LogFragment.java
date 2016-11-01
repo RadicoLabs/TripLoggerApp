@@ -1,26 +1,40 @@
 package com.apm015.android.triplog;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 
+import com.apm015.android.triplog.database.PictureUtils;
+
+import java.io.File;
 import java.text.DateFormat;
+import java.util.UUID;
 
 /**
  * Created by Adam on 24/10/2016.
  */
 public class LogFragment extends Fragment{
 
-    private static final String TAG = "LocatrFragment";
+    private static final int REQUEST_PHOTO = 2;
+    private static final String ARG_TRIP_ID = "trip_id";
 
     private Trip mTrip;
 
@@ -34,6 +48,11 @@ public class LogFragment extends Fragment{
     private Button mSaveButton;
     private Button mCancelButton;
 
+    private File mPhotoFile;
+    private ImageButton mPhotoButton;
+    private ImageView mPhotoView;
+
+
     public static LogFragment newInstance() {
         Bundle args = new Bundle();
 
@@ -44,8 +63,23 @@ public class LogFragment extends Fragment{
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+
+        if (requestCode == REQUEST_PHOTO) {
+            updatePhotoView();
+        }
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        UUID tripId = (UUID) getArguments().getSerializable(ARG_TRIP_ID);
+        mTrip = TripLog.get(getActivity()).getTrip(tripId);
+        mPhotoFile  = TripLog.get(getActivity()).getPhotoFile(mTrip);
     }
 
     @Override
@@ -57,6 +91,7 @@ public class LogFragment extends Fragment{
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_log, container, false);
+        PackageManager packageManager = getActivity().getPackageManager();
 
         mTrip = new Trip();
 
@@ -77,6 +112,28 @@ public class LogFragment extends Fragment{
 
             }
         });
+
+        mPhotoButton = (ImageButton) v.findViewById(R.id.ib_trip_camera);
+        final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        boolean canTakePhoto = mPhotoFile != null && captureImage.resolveActivity(packageManager) != null;
+        Log.d("LOGFRAG", String.valueOf(canTakePhoto));
+        mPhotoButton.setEnabled(canTakePhoto);
+
+        if(canTakePhoto) {
+            Uri uri = Uri.fromFile(mPhotoFile);
+            captureImage.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        }
+
+        mPhotoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(captureImage, REQUEST_PHOTO);
+            }
+        });
+
+        mPhotoView = (ImageView) v.findViewById(R.id.iv_trip_photo);
+        updatePhotoView();
+
 
         mDate = (Button) v.findViewById(R.id.btn_fragment_log_date_value);
         mDate.setEnabled(false);
@@ -161,6 +218,15 @@ public class LogFragment extends Fragment{
         });
 
         return v;
+    }
+
+    private void updatePhotoView() {
+        if(mPhotoFile == null || !mPhotoFile.exists()) {
+            mPhotoView.setImageDrawable(null);
+        } else {
+            Bitmap bitmap = PictureUtils.getScaledBitmap(mPhotoFile.getPath(), getActivity());
+            mPhotoView.setImageBitmap(bitmap);
+        }
     }
 
 }

@@ -49,7 +49,7 @@ public class SettingsDBHelper extends SQLiteOpenHelper {
         mSettings.setName("Adam Martin");
         mSettings.setId("apm015");
         mSettings.setEmail("apm015@student.usd.edu.au");
-        mSettings.setGender("Female");
+        mSettings.setGender("Male");
         mSettings.setComment("testcomment");
 
         ContentValues values = getContentValues(mSettings);

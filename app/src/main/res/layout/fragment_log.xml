@@ -14,6 +14,9 @@
         android:padding="5dp"
         />
 
+    <include
+    layout="@layout/view_camera_and_title"/>
+
     <!--title -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
 
-            />
+            android:hint="Please enter a title "/>
     </LinearLayout>
 
     <!--date-->
@@ -103,7 +106,8 @@
             android:id="@+id/et_fragment_log_destination_value"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:hint="Please enter a destination"/>
 
 
     </LinearLayout>
@@ -126,7 +130,8 @@
             android:id="@+id/et_fragment_log_duration_value"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:hint="Please enter a duration"/>
 
     </LinearLayout>
 
@@ -148,7 +153,8 @@
             android:id="@+id/et_fragment_log_comment_value"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:hint="Please enter a comment"/>
 
     </LinearLayout>
 

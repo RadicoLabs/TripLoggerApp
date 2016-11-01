@@ -9,4 +9,10 @@
         android:title="@string/tlbar_new_trip"
         app:showAsAction="ifRoom|withText"/>
 
+    <item
+        android:id="@+id/menu_account_settings"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="@string/tlbar_settings"
+        app:showAsAction="ifRoom|withText" />
+
 </menu>

@@ -30,8 +30,8 @@ public class TripListFragment extends Fragment {
     private RecyclerView mTripRecyclerView;
     private TripAdapter mAdapter;
 
-    private Button mLogButton;
-    private Button mSettingsButton;
+    //private Button mLogButton;
+    //private Button mSettingsButton;
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -41,17 +41,19 @@ public class TripListFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
 
         switch(item.getItemId()) {
             case R.id.menu_item_new_trip:
-                //Trip trip = new Trip();
-                //TripLog.get(getActivity()).addTrip(trip);
-                //Intent in;
-
-
-                Intent intent = new LogActivity().newIntent(getActivity());
+                intent = new LogActivity().newIntent(getActivity());
                 startActivity(intent);
                 return true;
+
+            case R.id.menu_account_settings:
+                intent = new SettingsActivity().newIntent(getActivity());
+                startActivity(intent);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
 
@@ -71,6 +73,7 @@ public class TripListFragment extends Fragment {
         mTripRecyclerView = (RecyclerView) view.findViewById(R.id.trip_recycler_view);
         mTripRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        /*
         mLogButton = (Button) view.findViewById(R.id.btn_tripList_log);
         mLogButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +93,7 @@ public class TripListFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+*/
         updateUI();
 
         return view;

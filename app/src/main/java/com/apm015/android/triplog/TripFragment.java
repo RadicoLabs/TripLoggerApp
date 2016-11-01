@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.LayoutInflaterCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -134,6 +135,7 @@ public class TripFragment extends Fragment {
         mPhotoButton = (ImageButton) v.findViewById(R.id.ib_trip_camera);
         final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         boolean canTakePhoto = mPhotoFile != null && captureImage.resolveActivity(packageManager) != null;
+        Log.d("TRIPFRAG", String.valueOf(canTakePhoto));
         mPhotoButton.setEnabled(canTakePhoto);
 
         if(canTakePhoto) {
