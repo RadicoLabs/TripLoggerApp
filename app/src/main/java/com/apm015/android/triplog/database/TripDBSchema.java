@@ -16,7 +16,6 @@ public class TripDBSchema {
             public static final String DESTINATION = "destination";
             public static final String DURATION = "duration";
             public static final String COMMENT = "comment";
-            public static final String PHOTO = "photo";
         }
 
     }
