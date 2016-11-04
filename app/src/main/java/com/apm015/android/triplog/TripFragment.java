@@ -42,7 +42,7 @@ public class TripFragment extends Fragment {
 
     private Trip mTrip;
     private EditText mTitleField;
-    private Button mDateButton;
+    private TextView mDate;
 
     private TextView mType;
     private TextView mDestination;
@@ -101,16 +101,9 @@ public class TripFragment extends Fragment {
         mTitleField = (EditText) v.findViewById(R.id.et_tripTitle);
         mTitleField.setText(mTrip.getTitle());
 
-        mDateButton = (Button) v.findViewById(R.id.btn_fragment_trip_date_value);
-        mDateButton.setText(DateFormat.getDateInstance().format(mTrip.getDate()));
-        mDateButton.setEnabled(false);
-        mDateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-               }
-        });
-
+        mDate = (TextView) v.findViewById(R.id.btn_fragment_trip_date_value);
+        mDate.setText(DateFormat.getDateInstance().format(mTrip.getDate()));
+   
         mType = (TextView) v.findViewById(R.id.tv_fragment_trip_type_value);
         mType.setText(mTrip.getType());
 

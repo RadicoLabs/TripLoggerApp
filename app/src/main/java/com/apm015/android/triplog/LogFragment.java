@@ -77,9 +77,7 @@ public class LogFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        UUID tripId = (UUID) getArguments().getSerializable(ARG_TRIP_ID);
-        mTrip = TripLog.get(getActivity()).getTrip(tripId);
-        mPhotoFile  = TripLog.get(getActivity()).getPhotoFile(mTrip);
+
     }
 
     @Override
